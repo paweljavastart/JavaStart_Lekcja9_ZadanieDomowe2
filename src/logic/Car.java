@@ -1,44 +1,40 @@
 package logic;
 
-public class Car extends Vehicle{
+public class Car extends Vehicle {
     private boolean airConditioningWorking;
+    static final double AIRCONDITIONING_BURNING = 0.8;
 
-    public Car(String name, double tankCapcity, double baseBurningPer100) {
-        super(name, tankCapcity, baseBurningPer100);
+    public Car(String name, double tankCapacity, double baseBurningPer100) {
+        super(name, tankCapacity, baseBurningPer100);
         this.airConditioningWorking = false;
-        setMomentBurningPer100(momentBurningCheck());
+        updateMomentBurning();
+        updatePossibleDistance();
     }
 
     protected double extraBurning() {
         if (airConditioningWorking) {
-            return 0.8;
+            return AIRCONDITIONING_BURNING;
         }
         return 0;
-    }
-
-    double momentBurningCheck() {
-            return getBaseBurningPer100() + extraBurning();
     }
 
     public void setAirConditioningON() {
         System.out.println("Uruchomiono klimatyzację");
         this.airConditioningWorking = true;
-        setMomentBurningPer100(getBaseBurningPer100() + extraBurning());
+        updateMomentBurning();
+        updatePossibleDistance();
     }
 
     public void setAirConditioningOFF() {
         System.out.println("Wyłączono klimatyzację");
         this.airConditioningWorking = false;
-        setMomentBurningPer100(getBaseBurningPer100());
+        updateMomentBurning();
+        updatePossibleDistance();
     }
 
     @Override
     public String toString() {
         return super.toString() + ", czy klimatyzacja jest włączona = " + airConditioningWorking;
-    }
-
-    public boolean isAirConditioningWorking() {
-        return airConditioningWorking;
     }
 
 }

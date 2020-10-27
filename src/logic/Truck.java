@@ -1,28 +1,19 @@
 package logic;
 
-public class Truck extends Car{
+public class Truck extends Car {
     private int cargoWeight;
+    static final double CARGO_BURNING_INDICATOR = 0.5;
 
-    public Truck(String name, double tankCapcity, double baseBurningPer100, int cargoWeight) {
-        super(name, tankCapcity, baseBurningPer100);
+    public Truck(String name, double tankCapacity, double baseBurningPer100, int cargoWeight) {
+        super(name, tankCapacity, baseBurningPer100);
         this.cargoWeight = cargoWeight;
-        setMomentBurningPer100(momentBurningCheck());
+        updateMomentBurning();
+        updatePossibleDistance();
     }
 
+    @Override
     protected double extraBurning() {
-        return super.extraBurning()*2 + cargoWeight/100 * 0.5;
-    }
-
-    double momentBurningCheck() {
-            return getBaseBurningPer100() + extraBurning();
-    }
-
-    public void setAirConditioningON() {
-        super.setAirConditioningON();
-    }
-
-    public void setAirConditioningOFF() {
-        super.setAirConditioningOFF();
+        return super.extraBurning() * 2 + cargoWeight / 100 * CARGO_BURNING_INDICATOR;
     }
 
     @Override
