@@ -7,8 +7,6 @@ public class Truck extends Car {
     public Truck(String name, double tankCapacity, double baseBurningPer100, int cargoWeight) {
         super(name, tankCapacity, baseBurningPer100);
         this.cargoWeight = cargoWeight;
-        updateMomentBurning();
-        updatePossibleDistance();
     }
 
     @Override

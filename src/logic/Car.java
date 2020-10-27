@@ -7,8 +7,6 @@ public class Car extends Vehicle {
     public Car(String name, double tankCapacity, double baseBurningPer100) {
         super(name, tankCapacity, baseBurningPer100);
         this.airConditioningWorking = false;
-        updateMomentBurning();
-        updatePossibleDistance();
     }
 
     protected double extraBurning() {
@@ -21,15 +19,11 @@ public class Car extends Vehicle {
     public void setAirConditioningON() {
         System.out.println("Uruchomiono klimatyzację");
         this.airConditioningWorking = true;
-        updateMomentBurning();
-        updatePossibleDistance();
     }
 
     public void setAirConditioningOFF() {
         System.out.println("Wyłączono klimatyzację");
         this.airConditioningWorking = false;
-        updateMomentBurning();
-        updatePossibleDistance();
     }
 
     @Override
